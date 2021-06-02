@@ -1,0 +1,8 @@
+<Label *ngIf="label" [text]="label"></Label>
+<TextField
+    [hint]="customHint"
+    [style.placeholderColor]="isFocused ? 'transparent' : '#DCDCDC'"
+    [ngClass]="{ focus: isFocused }"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+></TextField>

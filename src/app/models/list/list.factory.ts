@@ -17,6 +17,10 @@ export class ListFactory {
         return data.map((list) => this.create(list));
     }
 
+    public getAllShared(data: Data): ListShared[] {
+        return data.map((list) => this.create(list));
+    }
+
     public getOne(data: Data): ListShared | ListLocal {
         return this.create(data);
     }

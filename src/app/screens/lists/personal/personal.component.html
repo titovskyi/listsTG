@@ -1,0 +1,23 @@
+<GridLayout rows="*, auto" class="wrapper" *ngIf="lists$ | async as lists">
+    <FlexboxLayout *ngIf="lists.length; else empty" row="0">
+        <RadListView [items]="lists">
+            <ng-template tkListItemTemplate let-item="item">
+                <FlexboxLayout class='item-wrapper' ripple rippleColor="#b2b2b2" (tap)='openList(item.token)'>
+                    <StackLayout>
+                        <Label class="item-title" [text]="item.name" ></Label>
+                        <Label class="item-text" [text]="totalItems(item.products)"></Label>
+                    </StackLayout>
+                    <Image src='res://chevron_right' class='chevron-right'></Image>
+                </FlexboxLayout>
+            </ng-template>
+        </RadListView>
+    </FlexboxLayout>
+    <ng-template #empty>
+        <FlexboxLayout class="empty" row="0">
+            <Image src="res://cart"></Image>
+            <Label class="empty-text" text="У вас еще нет списков"></Label>
+            <Label class="empty-text" text="для покупок"></Label>
+        </FlexboxLayout>
+    </ng-template>
+    <Button text="Создать" row="1" (tap)='createList()'></Button>
+</GridLayout>

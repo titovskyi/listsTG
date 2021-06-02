@@ -1,0 +1,30 @@
+.wrapper {
+    padding: 0 24;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.empty {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.empty-text {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+button {
+    width: 100%;
+    height: 56;
+    font-size: 16;
+    line-height: 20px;
+    color: #ffffff;
+    border-width: 0;
+    background: #ff8933;
+    border-radius: 11;
+    padding: 18 0;
+    margin: 32 0 32 0;
+}

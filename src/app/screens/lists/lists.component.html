@@ -1,0 +1,11 @@
+<GridLayout rows="24, 40, *">
+    <Label class="status-bar" row='0'></Label>
+    <custom-action-bar row="1" class="header" [title]="userLogin" [menu]="'res://more_vertical'"></custom-action-bar>
+    <TabView row="2" androidSelectedTabHighlightColor="#FF8933" selectedTabTextColor="#000000" *ngIf="sharedLists.length; else emptyShared">
+        <page-router-outlet name="personal" *tabItem="{ title: 'Мои' }"></page-router-outlet>
+        <page-router-outlet name="collective" *tabItem="{ title: 'Совместные' }"></page-router-outlet>
+    </TabView>
+    <ng-template #emptyShared>
+        <personal-lists row='2'></personal-lists>
+    </ng-template>
+</GridLayout>

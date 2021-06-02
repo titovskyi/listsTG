@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { setString, getString } from 'tns-core-modules/application-settings';
+import { setString, getString } from '@nativescript/core/application-settings';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/internal/operators';
-
-// import { v4 as uuidv4 } from 'uuid';
 
 import { ListLocal } from './list.model';
 import { ListFactory } from '~/app/models/list/list.factory';
@@ -24,20 +22,35 @@ export class ListService {
     // #############################################
 
     public getAll(): Observable<ListLocal[]> {
-        return new Observable((observer) => {
-            const listJSON = getString(ListService.LISTS_STORAGE);
-            const data = listJSON ? JSON.parse(listJSON) : null;
+        // return new Observable((observer) => {
+        //     const listJSON = getString(ListService.LISTS_STORAGE);
+        //     const data = listJSON ? JSON.parse(listJSON) : null;
+        //
+        //     if (data) {
+        //         const localLists = data.map((list) => new ListLocal(list.token, list));
+        //
+        //         observer.next(localLists);
+        //         observer.complete();
+        //     } else {
+        //         observer.next([]);
+        //         observer.complete();
+        //     }
+        // });
+        const list = new ListLocal('t1', { name: 'first', createdAt: new Date() });
+        const list2 = new ListLocal('t2', { name: 'second', createdAt: new Date() });
+        const list3 = new ListLocal('t2', { name: 'second', createdAt: new Date() });
+        const list4 = new ListLocal('t2', { name: 'second', createdAt: new Date() });
+        const list5 = new ListLocal('t2', { name: 'second', createdAt: new Date() });
+        const list6 = new ListLocal('t2', { name: 'second', createdAt: new Date() });
+        const list7 = new ListLocal('t2', { name: 'second', createdAt: new Date() });
+        const list8 = new ListLocal('t2', { name: 'second', createdAt: new Date() });
+        const list44 = new ListLocal('t2', { name: 'second', createdAt: new Date() });
+        const list92 = new ListLocal('t2', { name: 'second', createdAt: new Date() });
+        const list22 = new ListLocal('t2', { name: 'second', createdAt: new Date() });
+        const list21 = new ListLocal('t2', { name: 'second', createdAt: new Date() });
 
-            if (data) {
-                const localLists = data.map((list) => new ListLocal(list.token, list));
-
-                observer.next(localLists);
-                observer.complete();
-            } else {
-                observer.next([]);
-                observer.complete();
-            }
-        });
+        return of([list, list2, list3, list4, list5, list6, list7, list8, list44, list92, list22, list21]);
+        // return of([]);
     }
 
     public getOne(token: string): Observable<ListLocal> {

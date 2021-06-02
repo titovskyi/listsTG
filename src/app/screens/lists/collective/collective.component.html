@@ -1,0 +1,13 @@
+<GridLayout rows="*, auto" class="wrapper" *ngIf="lists$ | async as lists">
+    <StackLayout *ngIf="lists.length; else empty" row="0">
+        <Label text="Something shared existed"></Label>
+    </StackLayout>
+    <ng-template #empty>
+        <FlexboxLayout class="empty" row="0">
+            <Image src="res://cart"></Image>
+            <Label class="empty-text" text="У вас еще нет списков"></Label>
+            <Label class="empty-text" text="для покупок"></Label>
+        </FlexboxLayout>
+    </ng-template>
+    <Button text="Создать" row="1"></Button>
+</GridLayout>

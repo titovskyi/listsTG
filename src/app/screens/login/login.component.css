@@ -1,0 +1,17 @@
+.wrapper {
+    flex-direction: column;
+    padding: 24 24 32 24;
+}
+
+Button {
+    width: 100%;
+    height: 56;
+    font-size: 16;
+    line-height: 20px;
+    color: #ffffff;
+    border-width: 0;
+    background: #FF8933;
+    border-radius: 11;
+    padding: 18 0;
+    margin: 32 0 0 0;
+}
