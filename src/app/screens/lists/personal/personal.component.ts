@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Page, Color } from '@nativescript/core';
 import { Observable } from 'rxjs';
 import { ListService } from '~/app/models/list/list.service';
 import { ListLocal } from '~/app/models/list/list.model';
 import { Product } from '~/app/models/product/product.model';
-import { RouterExtensions } from '@nativescript/angular';
+import { ModalDialogService, RouterExtensions } from '@nativescript/angular';
+import { ListNameModalComponent } from '~/app/modals/list-name-modal/list-name-modal.component';
+import { UiService } from '~/app/screens/ui.service';
 
 @Component({
     selector: 'personal-lists',
@@ -17,7 +19,14 @@ export class PersonalComponent implements OnInit {
 
     // ########################################
 
-    constructor(private page: Page, private listService: ListService, private router: RouterExtensions) {
+    constructor(
+        private page: Page,
+        private listService: ListService,
+        private router: RouterExtensions,
+        private modalDialog: ModalDialogService,
+        private vcRef: ViewContainerRef,
+        private uiService: UiService
+    ) {
         this.page.actionBarHidden = true;
         this.page.androidStatusBarBackground = new Color('rgba(33, 33, 33, 0.08)');
     }
@@ -35,7 +44,16 @@ export class PersonalComponent implements OnInit {
     }
 
     public createList(): void {
-        this.router.navigate([`list`]);
+        this.modalDialog.showModal(ListNameModalComponent, {
+            viewContainerRef: this.uiService.getRootVCRef(),
+            fullscreen: true,
+            context: {
+                type: 'personal'
+            }
+        }).then((res) => {
+            console.log(res);
+        });
+        // this.router.navigate([`list`]);
     }
 
     // ########################################

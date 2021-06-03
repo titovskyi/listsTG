@@ -14,12 +14,13 @@ import { PersonalComponent } from '~/app/screens/lists/personal/personal.compone
 import { CollectiveComponent } from '~/app/screens/lists/collective/collective.component';
 import { CustomActionBarComponent } from '~/app/shared/custom-action-bar/custom-action-bar.component';
 import { NgRippleModule } from 'nativescript-ripple/angular';
+import { ListNameModalComponent } from '~/app/modals/list-name-modal/list-name-modal.component';
 
 @NgModule({
     bootstrap: [AppComponent],
     imports: [AppRoutingModule, NativeScriptModule, HttpClientModule, NativeScriptHttpClientModule, NativeScriptUIListViewModule, LoginModule, NgRippleModule],
     exports: [],
-    declarations: [AppComponent, ListsComponent, PersonalComponent, CollectiveComponent, CustomActionBarComponent],
+    declarations: [AppComponent, ListsComponent, PersonalComponent, CollectiveComponent, CustomActionBarComponent, ListNameModalComponent],
     providers: [],
     schemas: [NO_ERRORS_SCHEMA]
 })
